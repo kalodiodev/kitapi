@@ -20,7 +20,7 @@ Kitapi is a software to help users manage their income and expenses easily. Code
 
 ## Prerequisites
 
-You will need Java 8 to build and run Kitapi.  You can download it from the [Oracle Website](http://www.oracle.com/technetwork/java/javase/downloads/index.html).  Everything else, including Gradle, will be downloaded by the build process.
+You will need Java 8 to build and run Kitapi.
 
 ## How To Build Kitapi
 
@@ -29,7 +29,7 @@ You can build kitapi with the following command:
 $ ./gradlew clean build
 ~~~
 
-# How To Run Kitapi
+## How To Run Kitapi
 
 You can run the development version from the command line as follows:
 ~~~
