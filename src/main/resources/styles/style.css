@@ -1,0 +1,142 @@
+.button {
+   /* -fx-background-color: #c2d8ff; */
+    -fx-background-color: #e4e4f7;
+    -fx-border-color: #bbc5e3;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #052968;
+    -fx-font-size: 1.25em;
+    -fx-padding: 2 10 2 10;
+}
+
+.button:hover {
+    -fx-background-color: #ccccff;
+}
+
+.button:pressed {
+    -fx-text-fill: #ffebd8;
+    -fx-background-color: #474589;
+}
+
+.tool-bar {
+    -fx-background-color: #cccce3;
+}
+
+.root {
+    -fx-background-color: #f5f8ff;
+    -fx-accent: #b6c2ea;
+    -fx-focus-color: #8798a7;
+}
+
+.label {
+    -fx-font-size: 1.2em;
+}
+
+.big_label {
+    -fx-font: bolder 2.2em monospace;
+}
+
+.title_label {
+    -fx-font-size: 1.7em;
+}
+
+.review_text {
+    -fx-font-size: 1.6em;
+    -fx-font-family: sans-serif;
+}
+
+.brown_text {
+    -fx-text-fill: #c64801;
+    -fx-fill: #c64801;
+}
+
+.green_text {
+    -fx-text-fill: #3d7e00;
+    -fx-fill: #3d7e00;
+}
+
+.menu-bar {
+    -fx-background-color: #f5f8ff;
+}
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color: #c2c3dc;
+    -fx-border-color: #b6c2ea;
+    -fx-border-style: solid;
+    -fx-faint-focus-color: #b6c2ea ;
+}
+
+.dialog-title {
+    -fx-font-size: 1.6em;
+    -fx-font-family: sans-serif;
+    -fx-padding: 10 0 10 0;
+}
+
+/*******************************************************************************
+ * Dialog                                                                      *
+ ******************************************************************************/
+
+.dialog-pane {
+    -fx-background-color: #f5f8ff;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: #b6c2ea;
+}
+
+ .dialog:header > .dialog-pane > .header-panel {
+     -fx-background-color: #9492d9;
+     -fx-font-style: italic;
+ }
+
+ /*********************************************************************
+ * RadioButton                                                        *
+ *********************************************************************/
+
+ .radio-button {
+     -fx-text-fill: #474589;
+ }
+
+ .radio-button > .radio > .dot {
+    -fx-mark-color: #474589;
+ }
+
+ /*********************************************************************
+ * Custom                                                             *
+ *********************************************************************/
+
+ .disclaimer-title {
+     -fx-font-style: italic;
+     -fx-font-weight: bolder;
+     -fx-font-size: 1.4em;
+ }
+
+ .disclaimer-text {
+     -fx-font-style: italic;
+     -fx-font-size: 1.1em;
+ }
+
+.credits-title {
+    -fx-font-weight: bolder;
+    -fx-font-size: 1.4em;
+}
+
+ .version-label {
+     -fx-font-size: 1.2em;
+ }
+
+ .big-title {
+     -fx-font-size: 2.2em;
+ }
+
+ .link {
+     -fx-text-fill: darkblue;
+ }
+
+ .license-box {
+     -fx-border-color: lightgray;
+     -fx-border-style: solid;
+     -fx-border-width: 1px 0px 0px 0px;
+ }

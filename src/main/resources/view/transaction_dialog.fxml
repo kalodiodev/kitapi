@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright 2017 Athanasios Raptodimos
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<BorderPane fx:controller="eu.kalodiodev.kitapi.controller.TransactionDialogController"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="/styles/style.css">
+
+    <center>
+        <!-- Input Fields -->
+        <GridPane vgap="10" hgap="10">
+            <Label text="%property.category" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="categoryComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Hyperlink text="%category.add_new" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                       onAction="#handleAddCategory" textFill="cornflowerblue"/>
+
+            <Label text="%property.name" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="nameField" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+
+            <VBox GridPane.rowIndex="2" GridPane.columnIndex="0">
+                <Label  text="%property.description" />
+            </VBox>
+            <TextArea fx:id="descriptionField" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+
+            <VBox GridPane.rowIndex="3" GridPane.columnIndex="0">
+                <Label  text="%property.date" />
+            </VBox>
+            <DatePicker fx:id="datePicker" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+
+            <VBox GridPane.rowIndex="4" GridPane.columnIndex="0">
+                <Label text="%property.amount" />
+            </VBox>
+            <TextField fx:id="amountField" GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <!-- Warning or Error Label -->
+        <HBox alignment="CENTER">
+            <Label fx:id="errorMessageLabel" textFill="brown">
+                <font>
+                    <Font size="14"/>
+                </font>
+            </Label>
+        </HBox>
+    </bottom>
+
+</BorderPane>

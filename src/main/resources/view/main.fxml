@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright 2017 Athanasios Raptodimos
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tooltip?>
+<BorderPane fx:id="mainPanel" stylesheets="/styles/style.css"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="eu.kalodiodev.kitapi.controller.MainController">
+
+    <top>
+        <VBox>
+            <!-- Menu Bar -->
+            <MenuBar style="-fx-background-color: #d2def9;">
+                <menus>
+                    <Menu text="%menu.file">
+                        <items>
+                            <!--<MenuItem text="Settings">-->
+                                <!--<graphic>-->
+                                    <!--<ImageView>-->
+                                        <!--<Image url="/icons/Properties16.gif" />-->
+                                    <!--</ImageView>-->
+                                <!--</graphic>-->
+                            <!--</MenuItem>-->
+
+                            <MenuItem onAction="#handleExit" text="%menu.exit" />
+                        </items>
+                    </Menu>
+
+                    <Menu text="%income">
+                        <items>
+                            <MenuItem onAction="#handleAddIncome" text="%action.add" />
+                            <MenuItem fx:id="incomeMenuItem" onAction="#handleShowTransactions" text="%action.show.list" />
+                            <MenuItem fx:id="incomeCategoriesMenuItem" onAction="#handleShowCategories" text="%categories" />
+                        </items>
+                    </Menu>
+
+                    <Menu text="%expenses">
+                        <items>
+                            <MenuItem onAction="#handleAddExpense" text="%action.add" />
+                            <MenuItem fx:id="expensesMenuItem" onAction="#handleShowTransactions" text="%action.show.list" />
+                            <MenuItem fx:id="expensesCategoriesMenuItem" onAction="#handleShowCategories" text="%categories" />
+                        </items>
+                    </Menu>
+
+                    <!--<Menu text="Reports" />-->
+
+                    <Menu text="%menu.help">
+                        <items>
+                            <MenuItem onAction="#handleShowAbout" text="%about" />
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+        </VBox>
+    </top>
+
+    <left>
+        <GridPane vgap="30" hgap="20" alignment="CENTER" style="-fx-background-color: #e4e4f7;">
+
+            <padding>
+                <Insets left="40" right="40"/>
+            </padding>
+
+            <Button text="%transaction.income.list"
+                    maxWidth="Infinity"
+                    GridPane.rowIndex="0"
+                    GridPane.columnIndex="0"
+                    minHeight="50"
+                    contentDisplay="TOP"
+                    onAction="#handleShowTransactions">
+
+                <style>
+                    <String fx:value="-fx-border-color: transparent;"/>
+                </style>
+
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/Transaction_List_50.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="expensesButton"
+                    text="%transaction.expenses.list"
+                    GridPane.rowIndex="1" GridPane.columnIndex="0"
+                    maxWidth="Infinity"
+                    minHeight="50"
+                    contentDisplay="TOP"
+                    onAction="#handleShowTransactions">
+
+                <style>
+                    <String fx:value="-fx-border-color: transparent;"/>
+                </style>
+
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/Transaction_List_50.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="incomeCategoriesButton"
+                    text="%category.income.list"
+                    GridPane.rowIndex="2"
+                    GridPane.columnIndex="0"
+                    maxWidth="Infinity"
+                    minHeight="50"
+                    contentDisplay="TOP"
+                    onAction="#handleShowCategories">
+
+                <style>
+                    <String fx:value="-fx-border-color: transparent;"/>
+                </style>
+
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/bulleted_list_50.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="expensesCategoriesButton"
+                    text="%category.expenses.list"
+                    GridPane.rowIndex="3"
+                    GridPane.columnIndex="0"
+                    maxWidth="Infinity"
+                    minHeight="50"
+                    contentDisplay="TOP"
+                    onAction="#handleShowCategories">
+
+                <style>
+                    <String fx:value="-fx-border-color: transparent;"/>
+                </style>
+
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/bulleted_list_50.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+        </GridPane>
+    </left>
+
+    <center>
+        <GridPane alignment="CENTER" hgap="30" vgap="15">
+
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" percentWidth="35.0" />
+                <ColumnConstraints halignment="CENTER" percentWidth="35.0" />
+            </columnConstraints>
+
+            <!-- Review -->
+
+            <!-- Balance -->
+            <Label text="%balance" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/Coins_50.png" />
+                    </ImageView>
+                </graphic>
+
+                <styleClass>
+                    <String fx:value="big_label"/>
+                </styleClass>
+            </Label>
+            <Text fx:id="balanceField" text="0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <styleClass>
+                    <String fx:value="big_label"/>
+                </styleClass>
+            </Text>
+
+            <Label text="%income" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/Money_50.png" />
+                    </ImageView>
+                </graphic>
+
+                <styleClass>
+                    <String fx:value="title_label"/>
+                </styleClass>
+            </Label>
+
+            <Label text="%expenses" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/Card_in_Use_50.png" />
+                    </ImageView>
+                </graphic>
+
+                <styleClass>
+                    <String fx:value="title_label"/>
+                </styleClass>
+            </Label>
+
+            <Button onAction="#handleAddIncome" text="%action.add" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/plus_24.png"/>
+                    </ImageView>
+                </graphic>
+
+                <tooltip>
+                    <Tooltip text="%income.add.tooltip"/>
+                </tooltip>
+            </Button>
+
+            <Button onAction="#handleAddExpense" text="%action.add" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <graphic>
+                    <ImageView>
+                        <Image url="/icons/plus_24.png"/>
+                    </ImageView>
+                </graphic>
+
+                <tooltip>
+                    <Tooltip text="%expense.add.tooltip"/>
+                </tooltip>
+            </Button>
+
+            <!-- Totals -->
+            <Label text="%total.income" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="totalIncomeField" text="0" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Text>
+
+            <Label text="%total.expenses" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="totalExpensesField"  text="0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Text>
+
+            <!-- Current Year -->
+            <Label text="%total.income.current.year" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="currentYearIncomeText" text="0" GridPane.columnIndex="0" GridPane.rowIndex="7">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Text>
+
+            <Label text="%total.expenses.current.year" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="currentYearExpensesText" text="0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Text>
+
+            <!-- Current Month -->
+            <Label text="%total.income.current.month" GridPane.columnIndex="0" GridPane.rowIndex="8">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="currentMonthIncomeText" text="0" GridPane.columnIndex="0" GridPane.rowIndex="9">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Text>
+
+            <Label text="%total.expenses.current.month" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="currentMonthExpensesText" text="0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Text>
+
+            <!-- Last Month -->
+            <Label text="%total.income.last.month" GridPane.columnIndex="0" GridPane.rowIndex="10">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="lastMonthIncomeText" text="0" GridPane.columnIndex="0" GridPane.rowIndex="11">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="green_text" />
+                </styleClass>
+            </Text>
+
+            <Label text="%total.expenses.last.month" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Label>
+
+            <Text fx:id="lastMonthExpensesText" text="0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                <styleClass>
+                    <String fx:value="review_text" />
+                    <String fx:value="brown_text" />
+                </styleClass>
+            </Text>
+
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+
+        </GridPane>
+    </center>
+
+</BorderPane>
