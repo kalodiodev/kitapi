@@ -31,7 +31,7 @@ $ ./gradlew clean build
 
 ## How To Run Kitapi
 
-You can run the development version from the command line as follows:
+[Download](https://github.com/kalodiodev/kitapi/releases) the latest release or you can run the development version from the command line as follows:
 ~~~
 $ ./gradlew run
 ~~~
